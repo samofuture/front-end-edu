@@ -1,0 +1,1 @@
+This is a folder to hold lessons from the following video: https://www.youtube.com/watch?v=mJgBOIoGihA
