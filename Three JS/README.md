@@ -1,0 +1,1 @@
+This part is to learn Three JS by following the documentation here: https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene
