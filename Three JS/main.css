@@ -1,0 +1,13 @@
+body {
+    background-color: #333;
+    color: whitesmoke;
+}
+
+#info {
+	position: absolute;
+	top: 10px;
+	width: 20%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+}

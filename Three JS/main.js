@@ -10,6 +10,7 @@ if ( WebGL.isWebGL2Available() ) {
 }
 
 import * as THREE from 'three';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 
 // Setup Scene and Camera
 const scene = new THREE.Scene();
@@ -21,7 +22,8 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 // Create Cube
-const geometry = new THREE.BoxGeometry( 5, 5, 5 );
+const cubeSize = 7.5
+const geometry = new THREE.BoxGeometry( cubeSize, cubeSize, cubeSize );
 const material = new THREE.MeshBasicMaterial( { color: 0x00dd88 } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
@@ -44,6 +46,27 @@ const line_geometry = new THREE.BufferGeometry().setFromPoints( points );
 const line = new THREE.Line( line_geometry, line_material );
 scene.add( line );
 
+const twoDimP = document.createElement( 'p' );
+twoDimP.textContent = 'This is a 2D Label';
+
+const twoDimDiv = document.createElement( 'div' );
+twoDimDiv.appendChild(twoDimP)
+
+const twoDimLabel = new CSS2DObject( twoDimDiv );
+twoDimLabel.position.set( 1.5 + cubeSize, 0, 0 );
+
+scene.add( twoDimLabel );
+
+
+// CSS2DRenderer
+
+const twoDimRenderer = new CSS2DRenderer();
+twoDimRenderer.setSize(window.innerWidth, window.innerHeight);
+twoDimRenderer.domElement.style.position = 'absolute';
+twoDimRenderer.domElement.style.top = '0px';
+twoDimRenderer.domElement.style.color = 'ff00ff';
+document.body.appendChild( twoDimRenderer.domElement );
+
 // Change position of Camera
 camera.position.set(0, 0, 50);
 camera.lookAt(0,0,0)
@@ -53,6 +76,10 @@ function animate() {
     cube.rotation.y += 0.01;
     wireframe.rotation.x += 0.01;
     wireframe.rotation.y += 0.01;
-	renderer.render( scene, camera );
+
+    var x = 
+
+    renderer.render( scene, camera );
+    twoDimRenderer.render( scene, camera );
 }
 renderer.setAnimationLoop( animate );
